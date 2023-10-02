@@ -15,10 +15,12 @@ import MenuItem from "@mui/material/MenuItem";
 import { Link, useNavigate } from "react-router-dom";
 import { useSelector, useDispatch } from "react-redux";
 import { logout } from "../../components/redux/authSlice";
+import ModalConfirm from "../Modal/ModalConfirm";
 
 function ResponsiveAppBar() {
   const [anchorElNav, setAnchorElNav] = React.useState(null);
   const [anchorElUser, setAnchorElUser] = React.useState(null);
+  const [openConfirmDialogue, setOpenConfirmDialogue] = React.useState(false);
   // const isAuth = useSelector(selectorIsAuth);
   const dispatch = useDispatch();
   const navigate = useNavigate();
@@ -40,11 +42,9 @@ function ResponsiveAppBar() {
   };
 
   const onClickLogout = () => {
-    if (window.confirm("Are you sure you want to logout?")) {
-      dispatch(logout());
-      window.localStorage.removeItem("token");
-      navigate("/login");
-    }
+    dispatch(logout());
+    window.localStorage.removeItem("token");
+    navigate("/login");
   };
 
   const navLinks = userData?.admin
@@ -169,11 +169,18 @@ function ResponsiveAppBar() {
                   to={setting.path || undefined}
                   onClick={
                     setting.label === "Logout"
-                      ? onClickLogout
+                      ? setOpenConfirmDialogue
                       : handleCloseUserMenu
                   }
                 >
                   <Typography textAlign="center">{setting.label}</Typography>
+                  <ModalConfirm
+                    open={openConfirmDialogue}
+                    setOpen={setOpenConfirmDialogue}
+                    handleConfirm={onClickLogout}
+                    content={"Are you sure you want to logout?"}
+                    title={"Log out"}
+                  />
                 </MenuItem>
               ))}
             </Menu>

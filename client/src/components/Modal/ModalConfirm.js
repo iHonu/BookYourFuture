@@ -27,7 +27,7 @@ function ModalConfirm({ open, setOpen, handleConfirm, content, title }) {
           </DialogContentText>
         </DialogContent>
         <DialogActions>
-          <Button onClick={handleClose}>NO</Button>
+          <Button onClick={handleClose}>CANCEL</Button>
           <Button onClick={handleConfirm} autoFocus>
             OK
           </Button>
