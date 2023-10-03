@@ -4,6 +4,7 @@ import { useNavigate, useParams } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 import { getDeleteUser } from "../../../components/redux/userSlice";
 import ModalConfirm from "../../../components/Modal/ModalConfirm";
+import { logout } from "../../../components/redux/authSlice";
 
 export default function SecurityTab() {
   const navigate = useNavigate();
@@ -19,8 +20,9 @@ export default function SecurityTab() {
   const handleDeleteAccount = () => {
     // User confirmed, so proceed with deletion
     dispatch(getDeleteUser(id));
+    dispatch(logout());
     window.localStorage.removeItem("token");
-    navigate("/");
+    navigate("/login");
   };
 
   return (
