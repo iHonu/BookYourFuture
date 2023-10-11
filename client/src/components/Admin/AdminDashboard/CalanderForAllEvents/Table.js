@@ -95,7 +95,7 @@ export default function EventTable(props) {
                   </TableCell>
                   <Hidden mdDown>
                     <TableCell align="right">
-                      {event.group[0].numberOfGroupName}
+                      {event.group[0]?.numberOfGroupName}
                     </TableCell>
                   </Hidden>
                 </TableRow>
