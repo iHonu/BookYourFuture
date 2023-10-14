@@ -1,0 +1,51 @@
+.animated-alert {
+  animation: moveAlert 3s cubic-bezier(0.455, 0.03, 0.515, 0.955) 1 alternate;
+  transition: background-color 0.3s ease;
+}
+
+@keyframes moveAlert {
+  0%,
+  100% {
+    transform: translateX(0);
+  }
+  16.67% {
+    transform: translateX(20px);
+  }
+  33.33%,
+  100% {
+    transform: translateX(0);
+  }
+  50% {
+    transform: translateX(-10px);
+  }
+  66.67%,
+  100% {
+    transform: translateX(0);
+  }
+  83.33% {
+    transform: translateX(10px);
+  }
+}
+
+.animated-alert:hover {
+  background-color: rgb(212, 243, 209);
+}
+
+.book-a-slot-button {
+  animation: yourAnimationName 1s ease infinite alternate;
+  animation-delay: 3s;
+  color: black;
+}
+
+@keyframes yourAnimationName {
+  0% {
+    transform: translateX(0);
+  }
+  100% {
+    transform: translateX(10px);
+  }
+}
+
+Link {
+  text-decoration: none;
+}
